@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_effects.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>SEMANA 2 | WALLY EN EL UNIVERSO </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Grace Soto, Kevin Morocho, Yeli Becerra, Jorge Duarte, Maricela Paz y Johnny Quinche  " />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_effects.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+<body class="exe-web-site" id="exe-node-7"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">WALLY EN EL UNIVERSO</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">🏠Inicio</a></li>
+   <li><a href="ndice.html" class="no-ch">📓Índice</a></li>
+   <li><a href="introduccin.html" class="no-ch">📖Introducción</a></li>
+   <li><a href="_descripcin_del_proyecto.html" class="no-ch">📝 Descripción del Proyecto</a></li>
+   <li><a href="recursos.html" class="no-ch">📚Recursos</a></li>
+   <li class="current-page-parent"><a href="desarrollo_del_proyecto.html" class="current-page-parent daddy">🛠️Desarrollo del proyecto</a>
+   <ul>
+      <li><a href="semana_1.html" class="no-ch">SEMANA 1</a></li>
+      <li id="active"><a href="semana_2.html" class="active no-ch">SEMANA 2</a></li>
+      <li><a href="semana_3.html" class="no-ch">SEMANA 3</a></li>
+      <li><a href="semana_4.html" class="no-ch">SEMANA 4</a></li>
+   </ul>
+   </li>
+   <li><a href="anexos.html" class="no-ch">📑Anexos</a></li>
+   <li><a href="_creditos.html" class="no-ch">🪪 Creditos</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="semana_1.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="semana_3.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">SEMANA 2</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id24">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">👩🏻‍💻Programación</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta24_135_2" class="block iDevice_content">
+<div class="exe-text"><div class="exe-fx exe-paginated">
+<h2>Programación de la placa Arduino y servomotores para dar movimiento al prototipo.</h2>
+<p>Para comenzar la construcción de nuestro recurso educativo primero vamos a usar como material el Arduino uno y desde la plataforma tinkercad empezamos a simular el circuito para la base de nuestro carrito robot "WALLY EN EL UNIVERSO".</p>
+<p><img src="diseno_coneccion.png" alt="" width="711" height="384" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<p>#include &lt;SoftwareSerial.h&gt;</p>
+<p><br />int motor1A = 8;<br />int motor1B = 9;<br />int motor2B = 10;<br />int motor2A = 11;</p>
+<p><br />char state;</p>
+<p><br />#include &lt;DFRobotDFPlayerMini.h&gt;</p>
+<p><br />SoftwareSerial mySoftwareSerial(4, 5);  // RX, TX<br />DFRobotDFPlayerMini myDFPlayer;</p>
+<p><br />void setup() {<br />  pinMode(motor1A, OUTPUT);<br />  pinMode(motor1B, OUTPUT);<br />  pinMode(motor2A, OUTPUT);<br />  pinMode(motor2B, OUTPUT);</p>
+<p><br />  digitalWrite(motor1A, LOW);<br />  digitalWrite(motor1B, LOW);<br />  digitalWrite(motor2A, LOW);<br />  digitalWrite(motor2B, LOW);</p>
+<p>mySoftwareSerial.begin(9600);<br />  Serial.begin(9600);</p>
+<p><br />  Serial.println();<br />  Serial.println(F("DFRobot DFPlayer Mini Demo"));<br />  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));</p>
+<p><br />  if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate with mp3.<br />    Serial.println(F("Unable to begin:"));<br />    Serial.println(F("1.Please recheck the connection!"));<br />    Serial.println(F("2.Please insert the SD card!"));<br />    while (true)<br />      ;<br />  }<br />  Serial.println(F("DFPlayer Mini online."));<br />  //myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);<br />  //myDFPlayer.EQ(DFPLAYER_EQ_POP);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_ROCK);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_JAZZ);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_CLASSIC);<br />  //myDFPlayer.EQ(DFPLAYER_EQ_BASS);<br />  myDFPlayer.volume(30);  //Set volume value. From 0 to 30</p>
+<p> //myDFPlayer.play(1);  //Play the first mp3<br />  delay(2000);<br />  //myDFPlayer.play(1);  //Play the first mp3<br />}</p>
+<p>void loop() {<br />  if (Serial.available() &gt; 0) {<br />    state = Serial.read();<br />  }<br />  //Serial.println(state);</p>
+<p><br />  if (state == 'a')  //adelante<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, HIGH);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, HIGH);<br />    delay(500);<br />  }</p>
+<p>  if (state == 'r')  //reversa<br />  {<br />    digitalWrite(motor1A, HIGH);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, HIGH);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  }</p>
+<p> if (state == 'd')  //derecha<br />  {<br />    digitalWrite(motor1A, HIGH);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, HIGH);<br />    delay(500);<br />  }</p>
+<p>  if (state == 'i')  //izquierda<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, HIGH);<br />    digitalWrite(motor2A, HIGH);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  } </p>
+<p>if (state == 's')  //alto<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  }</p>
+<p></p>
+<p> if (state == '1')  //primera pregunta<br />  {<br />    myDFPlayer.play(1);  //reproduce sonido 1<br />  }</p>
+<p><br />  if (state == '2')  //segunda pregunta<br />  {<br />    myDFPlayer.play(2);  //reproduce sonido 2<br />  }</p>
+<p><br />  if (state == '3')  //tercera pregunta<br />  {<br />    myDFPlayer.play(3);  //reproduce sonido 3<br />  }</p>
+<p><br />  if (state == '4')  //cuarta pregunta<br />  {<br />    myDFPlayer.play(4);  //reproduce sonido 4<br />  }</p>
+<p><br />  if (state == '5')  //quinta pregunta<br />  {<br />    myDFPlayer.play(5);  //reproduce sonido 5<br />  }</p>
+<p><br />  if (state == '6')  //sexta pregunta<br />  {</p>
+<p>  myDFPlayer.play(6);  //reproduce sonido 6<br />  }</p>
+<p><br />  if (state == 'v')  // sonido verdader<br />  {<br />    myDFPlayer.play(7);  //reproduce sonido 7<br />  }</p>
+<p><br />  if (state == 'f')  // sonido falso<br />  {<br />    myDFPlayer.play(8);  //reproduce sonido 7<br />  }<br />  delay(100);<br />  state = 's';<br />}</p>
+<h2>Incorporar componentes: modem bluetooth.</h2>
+<p>Para que el carrito robot "WALLY EN EL UNIVERSO", se lo pueda mover lo haremos de la siguiente manera </p>
+<ul style="list-style-type: disc;">
+<li>Agregaremos el Modem bluetooth mismo que se utilizara para la transmisión de datos a distancias cortas de un dispositivo digital a otro</li>
+<li>La programación se realizara en la aplicación MIT App Inventor, donde se le dar las instrucciones como son, el moverse izquierda, derecha, enfrente y atrás; también para responder las acciones de las preguntas de correcto e incorrecto. </li>
+</ul>
+<p>La programación se realizó utilizando bloques visuales que asignan funciones específicas a cada botón de la interfaz: avanzar, retroceder, girar a la izquierda, girar a la derecha y detenerse, el mismo, incluyó bloques para establecer la conexión con el módulo Bluetooth HC-05 de WALLY, enviar cadenas de texto como comandos (“a” para avanzar, “r” para retroceder, “i” para girar a la izquierda, “d” para girar a la derecha,  “s” para detenerse, “1” para la pregunta 1,”2”  para la pregunta 2,”3” para la pregunta 3,”4”  para la pregunta 4, y “5”  para la pregunta 5) para procesar respuestas en tiempo real.</p>
+<table border="0" style="width: 100%;">
+<tbody>
+<tr>
+<td style="width: 33.3333%;"><img src="inventor_1.png" alt="" width="500" height="500" /></td>
+<td style="width: 33.3333%;"><img src="inventor_2.png" alt="" width="500" height="252" /></td>
+<td style="width: 33.3333%;"><img src="inventor_3.png" width="500" height="500" /></td>
+</tr>
+</tbody>
+</table>
+<p>El código que se puede visualizar es la aplicación que se realizo, con las opciones de adelante, atrás, izquierda y derecha, también la parte de ubicar cada una de las preguntas. </p>
+<p>Visualizándose de la siguiente manera: </p>
+<p><img src="inventor_5.png" width="1000" height="477" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<h2>Incorporar los audios </h2>
+<p>También se debe incluir los audios de la preguntas que van a reproducir el robot, para lo cual dentro del código de Arduino debemos agregar cada audio pero con la descripción de 0001  de la siguiente manera </p>
+<p><img src="audios_captura.png" alt="" width="544" height="353" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<ul>
+<li>Audio 0001 - Primer enunciado: El universo es el conjunto formado por todo el espacio y la materia. Enunciado correcto</li>
+<li>Audio 0002 - Segundo enunciado: Las galaxias son agrupaciones de estrellas y otros astros. Enunciado correcto</li>
+<li>Audio 0003 - Tercer enunciado: Existen aproximadamente más de dos millones de galaxias en el universo separadas por espacio vacío. Enunciado incorrecto.</li>
+<li>Audio 0004 - Cuarto enunciado: La luna tarda 30 días en dar una vuelta completa sobre sí misma. Enunciado incorrecto.</li>
+<li>Audio 0005 - Quinto enunciado: Los planetas son astros sin luz propia que giran alrededor de una estrella. Enunciado correcto</li>
+<li>Audio 0006 - Sexto enunciado: Los movimientos que hacen los planetas son de rotación y traslación. Enunciado correcto</li>
+<li>Audio 0007 - Sonido cuando es correcto.</li>
+<li>Audio 0008 - Sonido cuando es incorrecto.</li>
+</ul>
+<p><img src="prototipo_audio.png" alt="" width="848" height="483" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+</div>
+<p></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="semana_1.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="semana_3.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
