@@ -66,26 +66,25 @@
 <p><br />SoftwareSerial mySoftwareSerial(4, 5);  // RX, TX<br />DFRobotDFPlayerMini myDFPlayer;</p>
 <p><br />void setup() {<br />  pinMode(motor1A, OUTPUT);<br />  pinMode(motor1B, OUTPUT);<br />  pinMode(motor2A, OUTPUT);<br />  pinMode(motor2B, OUTPUT);</p>
 <p><br />  digitalWrite(motor1A, LOW);<br />  digitalWrite(motor1B, LOW);<br />  digitalWrite(motor2A, LOW);<br />  digitalWrite(motor2B, LOW);</p>
-<p>mySoftwareSerial.begin(9600);<br />  Serial.begin(9600);</p>
-<p><br />  Serial.println();<br />  Serial.println(F("DFRobot DFPlayer Mini Demo"));<br />  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));</p>
-<p><br />  if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate with mp3.<br />    Serial.println(F("Unable to begin:"));<br />    Serial.println(F("1.Please recheck the connection!"));<br />    Serial.println(F("2.Please insert the SD card!"));<br />    while (true)<br />      ;<br />  }<br />  Serial.println(F("DFPlayer Mini online."));<br />  //myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);<br />  //myDFPlayer.EQ(DFPLAYER_EQ_POP);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_ROCK);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_JAZZ);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_CLASSIC);<br />  //myDFPlayer.EQ(DFPLAYER_EQ_BASS);<br />  myDFPlayer.volume(30);  //Set volume value. From 0 to 30</p>
-<p> //myDFPlayer.play(1);  //Play the first mp3<br />  delay(2000);<br />  //myDFPlayer.play(1);  //Play the first mp3<br />}</p>
+<p><br />  mySoftwareSerial.begin(9600);<br />  Serial.begin(9600);</p>
+<p>Serial.println();<br />  Serial.println(F("DFRobot DFPlayer Mini Demo"));<br />  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));</p>
+<p><br />  if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate with mp3.<br />    Serial.println(F("Unable to begin:"));<br />    Serial.println(F("1.Please recheck the connection!"));<br />    Serial.println(F("2.Please insert the SD card!"));<br />    while (true)<br />      ;<br />  }<br />  Serial.println(F("DFPlayer Mini online."));<br />  //myDFPlayer.EQ(DFPLAYER_EQ_NORMAL);<br />  //myDFPlayer.EQ(DFPLAYER_EQ_POP);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_ROCK);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_JAZZ);<br />  //  myDFPlayer.EQ(DFPLAYER_EQ_CLASSIC);<br />  //myDFPlayer.EQ(DFPLAYER_EQ_BASS);<br />  myDFPlayer.volume(30);  //Set volume value. From 0 to 30<br />  //myDFPlayer.play(1);  //Play the first mp3<br />  delay(2000);<br />  //myDFPlayer.play(1);  //Play the first mp3<br />}</p>
 <p>void loop() {<br />  if (Serial.available() &gt; 0) {<br />    state = Serial.read();<br />  }<br />  //Serial.println(state);</p>
-<p><br />  if (state == 'a')  //adelante<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, HIGH);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, HIGH);<br />    delay(500);<br />  }</p>
-<p>  if (state == 'r')  //reversa<br />  {<br />    digitalWrite(motor1A, HIGH);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, HIGH);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  }</p>
-<p> if (state == 'd')  //derecha<br />  {<br />    digitalWrite(motor1A, HIGH);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, HIGH);<br />    delay(500);<br />  }</p>
-<p>  if (state == 'i')  //izquierda<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, HIGH);<br />    digitalWrite(motor2A, HIGH);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  } </p>
-<p>if (state == 's')  //alto<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  }</p>
-<p></p>
+<p><br />  if (state == 'r')  //adelante<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, HIGH);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, HIGH);<br />    delay(500);<br />  }</p>
+<p><br />  if (state == 'a')  //reversa o atrás<br />  {<br />    digitalWrite(motor1A, HIGH);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, HIGH);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  }</p>
+<p><br />  if (state == 'd')  //derecha<br />  {<br />    digitalWrite(motor1A, HIGH);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, HIGH);<br />    delay(500);<br />  }</p>
+<p> if (state == 'i')  //izquierda<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, HIGH);<br />    digitalWrite(motor2A, HIGH);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  }</p>
+<p><br />  if (state == 's')  //alto<br />  {<br />    digitalWrite(motor1A, LOW);<br />    digitalWrite(motor1B, LOW);<br />    digitalWrite(motor2A, LOW);<br />    digitalWrite(motor2B, LOW);<br />    delay(500);<br />  }</p>
 <p> if (state == '1')  //primera pregunta<br />  {<br />    myDFPlayer.play(1);  //reproduce sonido 1<br />  }</p>
 <p><br />  if (state == '2')  //segunda pregunta<br />  {<br />    myDFPlayer.play(2);  //reproduce sonido 2<br />  }</p>
 <p><br />  if (state == '3')  //tercera pregunta<br />  {<br />    myDFPlayer.play(3);  //reproduce sonido 3<br />  }</p>
 <p><br />  if (state == '4')  //cuarta pregunta<br />  {<br />    myDFPlayer.play(4);  //reproduce sonido 4<br />  }</p>
 <p><br />  if (state == '5')  //quinta pregunta<br />  {<br />    myDFPlayer.play(5);  //reproduce sonido 5<br />  }</p>
-<p><br />  if (state == '6')  //sexta pregunta<br />  {</p>
-<p>  myDFPlayer.play(6);  //reproduce sonido 6<br />  }</p>
-<p><br />  if (state == 'v')  // sonido verdader<br />  {<br />    myDFPlayer.play(7);  //reproduce sonido 7<br />  }</p>
-<p><br />  if (state == 'f')  // sonido falso<br />  {<br />    myDFPlayer.play(8);  //reproduce sonido 7<br />  }<br />  delay(100);<br />  state = 's';<br />}</p>
+<p><br />  if (state == '6')  //sexta pregunta<br />  {<br />    myDFPlayer.play(6);  //reproduce sonido 6<br />  }</p>
+<p><br />  if (state == 'v')  // sonido verdadero<br />  {</p>
+<p> myDFPlayer.play(7);  //reproduce sonido 7<br />  }</p>
+<p><br />  if (state == 'f')  // sonido falso<br />  {<br />    myDFPlayer.play(8);  //reproduce sonido 7<br />  }<br />   if (state == 'h')  // sonido hola<br />  {<br />    myDFPlayer.play(9);  //reproduce sonido 9<br />  }<br />  if (state == 'q')  // sonido oh que bonito<br />  {<br />    myDFPlayer.play(10);  //reproduce sonido 10<br />  }<br />  if (state == 'in')  // sonido introduccion<br />  {<br />    myDFPlayer.play(11);  //reproduce sonido 11<br />  }<br />  if (state == 'res')  // sonido te invito<br />  {<br />    myDFPlayer.play(12);  //reproduce sonido 12<br />  }</p>
+<p>delay(100);<br />  state = 's';<br />}</p>
 <h2>Incorporar componentes: modem bluetooth.</h2>
 <p>Para que el carrito robot "WALLY EN EL UNIVERSO", se lo pueda mover lo haremos de la siguiente manera </p>
 <ul style="list-style-type: disc;">
@@ -93,12 +92,17 @@
 <li>La programación se realizara en la aplicación MIT App Inventor, donde se le dar las instrucciones como son, el moverse izquierda, derecha, enfrente y atrás; también para responder las acciones de las preguntas de correcto e incorrecto. </li>
 </ul>
 <p>La programación se realizó utilizando bloques visuales que asignan funciones específicas a cada botón de la interfaz: avanzar, retroceder, girar a la izquierda, girar a la derecha y detenerse, el mismo, incluyó bloques para establecer la conexión con el módulo Bluetooth HC-05 de WALLY, enviar cadenas de texto como comandos (“a” para avanzar, “r” para retroceder, “i” para girar a la izquierda, “d” para girar a la derecha,  “s” para detenerse, “1” para la pregunta 1,”2”  para la pregunta 2,”3” para la pregunta 3,”4”  para la pregunta 4, y “5”  para la pregunta 5) para procesar respuestas en tiempo real.</p>
-<table border="0" style="width: 100%;">
+<table border="1" style="width: 100%;">
 <tbody>
 <tr>
-<td style="width: 33.3333%;"><img src="inventor_1.png" alt="" width="500" height="500" /></td>
-<td style="width: 33.3333%;"><img src="inventor_2.png" alt="" width="500" height="252" /></td>
-<td style="width: 33.3333%;"><img src="inventor_3.png" width="500" height="500" /></td>
+<td style="width: 33.3333%;"><img src="img4.png" width="394" height="144" alt="1.mj" /></td>
+<td style="width: 33.3333%;"><img src="img6.png" /></td>
+<td style="width: 33.3333%;"><img src="img6.png" width="394" height="346" alt="4.mj" /></td>
+</tr>
+<tr>
+<td style="width: 33.3333%;"><img src="img7.png" width="394" height="212" alt="5.mj" /></td>
+<td style="width: 33.3333%;"><img src="img8.png" width="394" height="173" alt="6.mj" /></td>
+<td style="width: 33.3333%;"><img src="img9.png" width="394" height="294" alt="8.mj" /></td>
 </tr>
 </tbody>
 </table>
